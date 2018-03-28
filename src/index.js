@@ -2,15 +2,34 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 class Indecision extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleDeleteOptions = this.handleDeleteOptions;
+    this.state = {
+      options: []
+    };
+  }
+
+  handleDeleteOptions() {
+    this.setState(() => {
+     return {
+       options: []
+     } 
+    });
+  };
+
   render() {
     const title = 'Indecision';
     const subtitle = 'Put your life in the hand of a computer';
-    const options = ['One', 'Two', 'Three'];
+
     return(
       <div>
         <Header title={title} subtitle={subtitle}/>
-        <Action />
-        <Options options={options}/>
+        <Action hasOption={this.state.options.length} />
+        <Options 
+          options={this.state.options}
+          handleDeleteOptions={this.handleDeleteOptions}
+        />
         <AddOption />
       </div>
     ); 
@@ -35,20 +54,18 @@ class Action extends React.Component {
   render() {
     return (
       <div>
-      <button onClick={this.handlePick}>What should i do?</button>
+      <button onClick={this.handlePick} disabled={!this.props.hasOption}>What should i do?</button>
       </div>
     );
   }
 };
 
 class Options extends React.Component {
-  handleRemoveAll() {
-    alert('Remove All');
-  };
+ 
   render() {
     return(
       <div>
-        <button onClick={this.handleRemoveAll}>Remove All</button>
+        <button onClick={this.props.handleDeleteOptions}>Remove All</button>
         {
           this.props.options.map((option) => <Option key={option} optionText={option} />)
         }
