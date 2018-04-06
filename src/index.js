@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Indecision from './components/Indecision';
+import IndecisionApp from './components/IndecisionApp';
 
 
-ReactDOM.render(<Indecision />, document.getElementById("index"));
+ReactDOM.render(<IndecisionApp />, document.getElementById("index"));
