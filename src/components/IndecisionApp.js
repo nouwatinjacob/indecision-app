@@ -3,6 +3,7 @@ import AddOption from './AddOption';
 import Header from './Header';
 import Action from './Action';
 import Options from './Options';
+import OptionModal from './OptionModal';
 
 class Indecision extends React.Component {
     state = {
@@ -78,6 +79,7 @@ class Indecision extends React.Component {
           <AddOption
             handleAddOption={this.handleAddOption}
           />
+          <OptionModal />
         </div>
       ); 
     }
